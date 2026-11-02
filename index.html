@@ -317,6 +317,19 @@
             .hero-img-container { width: 250px; height: 250px; }
             .logotype { font-size: 2rem; }
         }
+
+        .portfolio-description { padding: 22px 26px; margin: 0 0 22px; text-align: right; }
+        .portfolio-description p { line-height: 1.9; margin-bottom: 16px; color: var(--neon-lilac); }
+        .portfolio-description .tools-tags { justify-content: flex-start; flex-wrap: wrap; gap: 12px; }
+        .tools-tags .tool-chip { display: inline-flex; align-items: center; gap: 8px; padding: 7px 13px; }
+        .tool-icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .banner-grid img { cursor: zoom-in; }
+        .image-lightbox { display: none; position: fixed; inset: 0; z-index: 100001; background: rgba(4, 2, 10, .94); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 24px; }
+        .image-lightbox.is-open { display: flex; }
+        .image-lightbox img { max-width: min(94vw, 1400px); max-height: 90vh; object-fit: contain; border-radius: 12px; box-shadow: 0 0 35px rgba(168,85,247,.28); }
+        .image-lightbox-close { position: absolute; top: 12px; left: 22px; border: 0; background: transparent; color: #fff; font-size: 2.8rem; line-height: 1; cursor: pointer; }
+        .image-lightbox-close:hover { color: var(--neon-cyan); }
+        @media (max-width: 600px) { .portfolio-description { padding: 18px; } }
     </style>
 </head>
 <body>
@@ -358,57 +371,6 @@
         </div>
     </section>
 
-    <!-- 3. Content Creation & Design Section -->
-    <h2 class="section-title">تولید محتوا <span>و طراحی</span></h2>
-    <section class="services">
-        <!-- Video Editing -->
-        <div class="glass-card service-card">
-            <svg viewBox="0 0 100 100" class="svg-icon">
-                <rect x="15" y="25" width="70" height="50" rx="5" fill="none" stroke="#a855f7" stroke-width="4" class="video-rect"/>
-                <polygon points="43,40 43,60 62,50" fill="#e9d5ff" class="play-btn"/>
-                <circle cx="25" cy="35" r="3" fill="#06b6d4"/><circle cx="25" cy="65" r="3" fill="#06b6d4"/>
-                <circle cx="75" cy="35" r="3" fill="#06b6d4"/><circle cx="75" cy="65" r="3" fill="#06b6d4"/>
-            </svg>
-            <h3>ادیت و تدوین ویدیو</h3>
-            <p>برش‌های دینامیک، همگام‌سازی صدا و تصویر، و اعمال ترنزیشن‌های خلاقانه برای ساخت ریلزهای ترند و وایرال که مخاطب را میخکوب می‌کند.</p>
-            <div class="tools-tags">
-                <span>CapCut</span>
-                <span>Alight Motion</span>
-            </div>
-        </div>
-
-        <!-- Story Motion -->
-        <div class="glass-card service-card">
-            <svg viewBox="0 0 100 100" class="svg-icon">
-                <rect x="30" y="10" width="40" height="80" rx="8" fill="none" stroke="#06b6d4" stroke-width="4"/>
-                <line x1="30" y1="20" x2="70" y2="20" stroke="#06b6d4" stroke-width="2"/>
-                <circle cx="50" cy="50" r="12" fill="#a855f7" class="motion-circle"/>
-                <rect x="40" y="70" width="20" height="6" rx="3" fill="#e9d5ff" class="motion-rect"/>
-            </svg>
-            <h3>استوری موشن</h3>
-            <p>جان‌بخشی به تصاویر ثابت و خلق انیمیشن‌های کوتاه و جذاب؛ بهترین ابزار برای پروموت کردن محصولات و افزایش خیره‌کننده فروش در کمپین‌ها.</p>
-            <div class="tools-tags">
-                <span>Alight Motion</span>
-                <span>CapCut</span>
-            </div>
-        </div>
-
-        <!-- Graphic Design -->
-        <div class="glass-card service-card">
-            <svg viewBox="0 0 100 100" class="svg-icon">
-                <path d="M20,80 L50,20 L80,80 Z" fill="none" stroke="#a855f7" stroke-width="5" class="draw-path" stroke-linejoin="round"/>
-                <circle cx="50" cy="65" r="10" fill="#06b6d4" class="color-dot"/>
-                <rect x="35" y="80" width="30" height="5" fill="#e9d5ff"/>
-            </svg>
-            <h3>طراحی بنر و کاور</h3>
-            <p>طراحی حرفه‌ای گرافیک، ترکیب‌بندی رنگ‌ها و تایپوگرافی اصولی برای کاور پست و بنرهای تبلیغاتی جهت خلق یک هویت بصری یکپارچه و زیبا.</p>
-            <div class="tools-tags">
-                <span>طراحی گرافیک</span>
-                <span>تایپوگرافی</span>
-            </div>
-        </div>
-    </section>
-
     <!-- 4. Portfolio Showcase (پوسترها و ویدیوها با نام یکسان) -->
     <h2 class="section-title">ویترین <span>نمونه‌کارها</span></h2>
     <section class="portfolio">
@@ -416,6 +378,10 @@
         <!-- Part 1: Video Editing -->
         <div class="portfolio-group">
             <h3>۱. ادیت و تدوین ویدیو (Reels & Video)</h3>
+            <div class="glass-card portfolio-description">
+                <p>برش‌های دینامیک، همگام‌سازی صدا و تصویر و ترنزیشن‌های خلاقانه برای ساخت ریلزهای جذاب و ترند؛ با تمرکز بر ریتم، روایت و جلب توجه مخاطب.</p>
+                <div class="tools-tags"><span class="tool-chip"><svg class="tool-icon capcut-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16M7 4l10 16M17 4 7 20"/></svg>CapCut</span><span class="tool-chip"><svg class="tool-icon alight-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/><path d="M12 3.5v5M20.5 12h-5M12 20.5v-5M3.5 12h5"/></svg>Alight Motion</span></div>
+            </div>
             <div class="video-grid-top">
                 <div class="portfolio-item video-item" data-video="video-1.mp4">
                     <img src="video-1.webp" alt="نمونه کار تدوین ۱">
@@ -425,6 +391,15 @@
                 </div>
                 <div class="portfolio-item video-item" data-video="video-3.mp4">
                     <img src="video-3.webp" alt="نمونه کار تدوین ۳">
+                </div>
+                <div class="portfolio-item video-item" data-video="video-4.mp4">
+                    <img src="video-4.webp" alt="نمونه کار تدوین ۴">
+                </div>
+                <div class="portfolio-item video-item" data-video="video-5.mp4">
+                    <img src="video-5.webp" alt="نمونه کار تدوین ۵">
+                </div>
+                <div class="portfolio-item video-item" data-video="video-6.mp4">
+                    <img src="video-6.webp" alt="نمونه کار تدوین ۶">
                 </div>
             </div>
             <div class="video-grid-bottom">
@@ -437,6 +412,10 @@
         <!-- Part 2: Story Motion -->
         <div class="portfolio-group">
             <h3>۲. استوری موشن (Story Motion)</h3>
+            <div class="glass-card portfolio-description">
+                <p>جان‌بخشی به تصاویر ثابت و خلق انیمیشن‌های کوتاه و چشم‌نواز؛ انتخابی مؤثر برای معرفی محصولات، روایت کمپین‌ها و افزایش تعامل مخاطبان.</p>
+                <div class="tools-tags"><span class="tool-chip"><svg class="tool-icon alight-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/><path d="M12 3.5v5M20.5 12h-5M12 20.5v-5M3.5 12h5"/></svg>Alight Motion</span><span class="tool-chip"><svg class="tool-icon capcut-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16M7 4l10 16M17 4 7 20"/></svg>CapCut</span></div>
+            </div>
             <div class="story-grid">
                 <div class="portfolio-item video-item" data-video="story-1.mp4">
                     <img src="story-1.webp" alt="نمونه کار استوری موشن ۱">
@@ -456,6 +435,9 @@
         <!-- Part 3: Banners (تصاویر ثابت بدون ویدیو) -->
         <div class="portfolio-group">
             <h3>۳. طراحی بنر و کاور (Graphic Design)</h3>
+            <div class="glass-card portfolio-description">
+                <p>طراحی بنر و کاور با ترکیب‌بندی سنجیده، رنگ‌های هماهنگ و تایپوگرافی خوانا؛ برای ساخت هویت بصری یکپارچه و جلب توجه در نگاه اول.</p>
+            </div>
             <div class="banner-grid">
                 <div class="portfolio-item"><img src="banner-1.webp" alt="بنر ۱"></div>
                 <div class="portfolio-item"><img src="banner-2.webp" alt="بنر ۲"></div>
@@ -475,11 +457,16 @@
     <div class="video-modal" id="videoModal">
         <div class="modal-content">
             <span class="modal-close" id="modalClose">&times;</span>
-            <video id="player" controls playsinline>
+            <video preload="none" id="player" controls playsinline>
                 <source src="" type="video/mp4">
                 مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
             </video>
         </div>
+    </div>
+
+    <div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-label="نمایش بزرگ بنر" aria-hidden="true">
+        <button type="button" class="image-lightbox-close" id="imageLightboxClose" aria-label="بستن">&times;</button>
+        <img id="imageLightboxPreview" alt="">
     </div>
 
     <!-- 5. Testimonials -->
@@ -487,12 +474,12 @@
     <section class="testimonials">
         <div class="glass-card testimo-card">
             <div class="stars">★★★★★</div>
-            <h4>پیج فروشگاهی X</h4>
+            <h4>پیج فروشگاهی</h4>
             <p>از وقتی یاسمن ادیت ریلزهای ما رو به عهده گرفته، بازدید پیجمون ۳ برابر شده. سرعت عمل و خلاقیتش بی‌نظیره!</p>
         </div>
         <div class="glass-card testimo-card">
             <div class="stars">★★★★★</div>
-            <h4>مجموعه آموزشی Y</h4>
+            <h4>مجموعه آموزشی</h4>
             <p>استوری موشن‌هایی که برای کمپین فروش ما طراحی کردن، نرخ تبدیل ما رو به شدت بالا برد. به شدت پیشنهاد میشه.</p>
         </div>
     </section>
@@ -514,6 +501,50 @@
     </section>
 
     <!-- 7. Footer & CTA -->
+
+    <!-- نتایج و رضایت کارفرماها -->
+    <section class="results-section" id="results" dir="rtl" aria-labelledby="results-title">
+      <div class="results-inner">
+        <p class="results-eyebrow">نتایج واقعی و رضایت کارفرماها</p>
+        <h2 id="results-title">آمار و نمونه‌های همکاری</h2>
+        <p class="results-intro">چند نمونه از آمار عملکرد محتوا و بازخوردهای دریافت‌شده</p>
+        <div class="results-stats">
+          <article class="results-stat"><strong>۳۷۰٬۵۲۰</strong><span>بازدید ریلز</span></article>
+          <article class="results-stat"><strong>۲۸۳٬۸۳۰</strong><span>حساب‌های رسیده</span></article>
+          <article class="results-stat"><strong>۳٬۵۲۳</strong><span>دنبال‌کنندهٔ جدید</span></article>
+        </div>
+        <h3 class="results-gallery-title">نمونه آمار و فیدبک کارفرماها</h3>
+        <div class="results-gallery"><button class="results-proof" type="button" onclick="openResultProof(&#x27;stat-1.webp&#x27;)" aria-label="نمایش بزرگ تصویر: نتیجهٔ آماری ریلز و رشد دنبال‌کننده"><img src="stat-1.webp" alt="نتیجهٔ آماری ریلز و رشد دنبال‌کننده" loading="lazy" decoding="async"><span>نتیجهٔ آماری ریلز و رشد دنبال‌کننده</span></button>
+<button class="results-proof" type="button" onclick="openResultProof(&#x27;proof-1.webp&#x27;)" aria-label="نمایش بزرگ تصویر: بازخورد و رضایت کارفرما"><img src="proof-1.webp" alt="بازخورد و رضایت کارفرما" loading="lazy" decoding="async"><span>بازخورد و رضایت کارفرما</span></button>
+<button class="results-proof" type="button" onclick="openResultProof(&#x27;proof-2.webp&#x27;)" aria-label="نمایش بزرگ تصویر: نمونهٔ رضایت مشتری"><img src="proof-2.webp" alt="نمونهٔ رضایت مشتری" loading="lazy" decoding="async"><span>نمونهٔ رضایت مشتری</span></button>
+<button class="results-proof" type="button" onclick="openResultProof(&#x27;proof-3.webp&#x27;)" aria-label="نمایش بزرگ تصویر: نمونهٔ بازخورد و همکاری"><img src="proof-3.webp" alt="نمونهٔ بازخورد و همکاری" loading="lazy" decoding="async"><span>نمونهٔ بازخورد و همکاری</span></button>
+<button class="results-proof" type="button" onclick="openResultProof(&#x27;proof-4.webp&#x27;)" aria-label="نمایش بزرگ تصویر: نمونهٔ نتیجه و رضایت"><img src="proof-4.webp" alt="نمونهٔ نتیجه و رضایت" loading="lazy" decoding="async"><span>نمونهٔ نتیجه و رضایت</span></button></div>
+      </div>
+    </section>
+    <div class="result-lightbox" id="resultLightbox" role="dialog" aria-modal="true" aria-label="نمایش تصویر" onclick="if(event.target===this) closeResultProof()">
+      <button type="button" class="result-lightbox-close" aria-label="بستن" onclick="closeResultProof()">&times;</button>
+      <img id="resultLightboxImage" alt="نمایش بزرگ تصویر">
+    </div>
+    <style>
+      .results-section{padding:72px 20px;background:linear-gradient(145deg,rgba(10,15,29,.96),rgba(18,25,45,.92));}
+      .results-inner{max-width:1100px;margin:auto;text-align:center}.results-eyebrow{color:#00f3ff;font-weight:700;margin:0 0 10px}
+      .results-inner h2{color:#fff;font-size:clamp(1.6rem,4vw,2.3rem);margin:0 0 10px}.results-intro{color:#aab4c5;margin:0 auto 30px}
+      .results-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:38px}
+      .results-stat{padding:23px 14px;border:1px solid rgba(0,243,255,.22);border-radius:16px;background:rgba(15,23,42,.72);box-shadow:0 8px 24px #0004}
+      .results-stat strong{display:block;color:#00f3ff;font-size:clamp(1.65rem,4vw,2.2rem);margin-bottom:7px}.results-stat span{color:#f1f5f9}
+      .results-gallery-title{color:#fff;margin:0 0 18px;font-size:1.25rem}.results-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px}
+      .results-proof{padding:0;border:1px solid #ffffff22;border-radius:14px;overflow:hidden;background:#0f172a;cursor:zoom-in;text-align:right;color:#fff;transition:transform .2s,border-color .2s}
+      .results-proof:hover{transform:translateY(-4px);border-color:#00f3ff}.results-proof img{display:block;width:100%;aspect-ratio:9/14;object-fit:cover}
+      .results-proof span{display:block;padding:11px;font-size:.9rem}.result-lightbox{display:none;position:fixed;z-index:100000;inset:0;background:#000e;align-items:center;justify-content:center;padding:24px}
+      .result-lightbox img{max-width:min(90vw,700px);max-height:85vh;object-fit:contain;border-radius:12px}.result-lightbox-close{position:absolute;top:14px;left:20px;border:0;background:none;color:white;font-size:2.5rem;cursor:pointer}
+      @media(max-width:480px){.results-section{padding:50px 14px}.results-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+    </style>
+    <script>
+      function openResultProof(src){const box=document.getElementById('resultLightbox');document.getElementById('resultLightboxImage').src=src;box.style.display='flex';document.body.style.overflow='hidden';}
+      function closeResultProof(){const box=document.getElementById('resultLightbox');box.style.display='none';document.getElementById('resultLightboxImage').src='';document.body.style.overflow='';}
+      document.addEventListener('keydown',e=>{if(e.key==='Escape')closeResultProof();});
+    </script>
+
     <section class="footer-cta">
         <h2 style="font-size: 2rem; text-shadow: 0 0 15px var(--neon-purple);">آماده‌ای پیجت رو به سطح بالاتری ببری؟</h2>
         <p style="margin-top: 15px; font-size: 1.1rem;">برای مشاوره و ثبت سفارش از طریق لینک‌های زیر در ارتباط باشیم:</p>
@@ -521,7 +552,7 @@
         <div class="social-buttons">
             <a href="https://t.me/editgraph_yasi" class="btn btn-tg">تلگرام</a>
             <a href="https://instagram.com/editgraph_yasi" class="btn btn-ig">اینستاگرام</a>
-            <a href="#" class="btn btn-rb">روبیکا</a>
+            <a href="https://web.rubika.ir/#c=u0CODed0ac813ec39c20be9adb4870ef" class="btn btn-rb" target="_blank" rel="noopener noreferrer">روبیکا</a>
         </div>
         
         <p style="margin-top: 60px; font-size: 0.9rem; opacity: 0.5;">طراحی شده با ❤️ برای Editgraph_yasi</p>
@@ -529,6 +560,36 @@
 
     <!-- JavaScript: Modal Video Player & Counter -->
     <script>
+
+        // بزرگ‌نمایی بنرها در lightbox
+        const imageLightbox = document.getElementById('imageLightbox');
+        const imageLightboxPreview = document.getElementById('imageLightboxPreview');
+        const closeImageLightbox = () => {
+            imageLightbox.classList.remove('is-open');
+            imageLightbox.setAttribute('aria-hidden', 'true');
+            imageLightboxPreview.src = '';
+            document.body.style.overflow = '';
+        };
+        const openImageLightbox = (image) => {
+            imageLightboxPreview.src = image.currentSrc || image.src;
+            imageLightboxPreview.alt = image.alt || 'نمایش بزرگ بنر';
+            imageLightbox.classList.add('is-open');
+            imageLightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        };
+        document.querySelectorAll('.banner-grid img').forEach(image => {
+            image.tabIndex = 0;
+            image.setAttribute('role', 'button');
+            image.setAttribute('aria-label', `بزرگ‌نمایی ${image.alt || 'بنر'}`);
+            image.addEventListener('click', () => openImageLightbox(image));
+            image.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openImageLightbox(image); }
+            });
+        });
+        document.getElementById('imageLightboxClose').addEventListener('click', closeImageLightbox);
+        imageLightbox.addEventListener('click', event => { if (event.target === imageLightbox) closeImageLightbox(); });
+        document.addEventListener('keydown', event => { if (event.key === 'Escape') closeImageLightbox(); });
+
         // ویدیو پلیر پاپ‌آپ
         const videoItems = document.querySelectorAll('.video-item');
         const modal = document.getElementById('videoModal');
