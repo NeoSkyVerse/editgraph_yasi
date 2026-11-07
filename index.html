@@ -381,6 +381,23 @@ h1,h2,h3,h4{color:#fff}
 @media(max-width:380px){.video-grid-top,.video-grid-bottom,.story-grid,.banner-grid{grid-template-columns:1fr}.portfolio-item img{max-height:300px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
+<style id="v8-features">
+.v8-progress{position:fixed;top:0;right:0;left:0;height:3px;z-index:9999;transform-origin:right;transform:scaleX(0);background:linear-gradient(90deg,#a855f7,#f472b6,#06b6d4);box-shadow:0 0 12px rgba(168,85,247,.8)}
+.v8-caret{color:#06b6d4;margin-right:4px;animation:v8-blink 1s steps(2) infinite}
+@keyframes v8-blink{50%{opacity:0}}
+.v8-marquee{margin:60px 0 10px;overflow:hidden;white-space:nowrap;border-block:1px solid rgba(168,85,247,.3);background:rgba(168,85,247,.08);padding:14px 0;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.v8-marquee-track{display:inline-flex;gap:0;animation:v8-marq 28s linear infinite}
+.v8-marquee-track span{font-size:clamp(1.1rem,2.6vw,1.6rem);font-weight:800;padding:0 28px;background:linear-gradient(90deg,#e9d5ff,#06b6d4);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.v8-marquee-track span:after{content:"✦";margin-right:28px;-webkit-text-fill-color:#f472b6;color:#f472b6}
+@keyframes v8-marq{to{transform:translateX(50%)}}
+.v8-filter{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 auto 28px;padding:0 16px}
+.v8-tab{font:inherit;font-weight:700;color:#e9d5ff;cursor:pointer;padding:10px 22px;border-radius:999px;border:1px solid rgba(196,181,253,.3);background:rgba(255,255,255,.05);backdrop-filter:blur(10px);transition:.3s}
+.v8-tab:hover{border-color:#06b6d4}
+.v8-tab.is-active{color:#fff;border-color:transparent;background:linear-gradient(135deg,#a855f7,#06b6d4);box-shadow:0 0 22px rgba(168,85,247,.6)}
+.v8-fab{display:none;position:fixed;bottom:18px;left:18px;z-index:900;width:60px;height:60px;border-radius:50%;align-items:center;justify-content:center;background:linear-gradient(135deg,#a855f7,#06b6d4);box-shadow:0 0 28px rgba(168,85,247,.75);color:#fff;font-size:24px;text-decoration:none}
+@media(max-width:768px){.v8-fab{display:flex}}
+@media(prefers-reduced-motion:reduce){.v8-marquee-track,.v8-caret{animation:none}}
+</style>
 </head>
 <body>
 
@@ -400,8 +417,17 @@ h1,h2,h3,h4{color:#fff}
             </div>
         </div>
         <div class="logotype">Editgraph_yasi</div>
-        <p style="margin-top: 15px; font-size: 1.2rem; letter-spacing: 1px;">ادمین، تدوینگر و طراح گرافیک</p>
+        <p style="margin-top: 15px; font-size: 1.2rem; letter-spacing: 1px;"><span id="v8-typed" aria-live="polite"></span><span class="v8-caret" aria-hidden="true">|</span></p>
     </section>
+
+        <!-- نوار ابزارها (حرکتی) -->
+    <div class="v8-marquee" aria-hidden="true">
+        <div class="v8-marquee-track">
+            <span>CapCut</span><span>Alight Motion</span><span>PixelLab</span><span>Canva</span><span>Snapseed</span><span>Picsart</span><span>VN Editor</span>
+            <span>CapCut</span><span>Alight Motion</span><span>PixelLab</span><span>Canva</span><span>Snapseed</span><span>Picsart</span><span>VN Editor</span>
+        </div>
+    </div>
+
 
     <!-- 2. Admin & Management Section -->
     <h2 class="section-title">مدیریت و <span>ادمینی پیج</span></h2>
@@ -423,6 +449,12 @@ h1,h2,h3,h4{color:#fff}
 
     <!-- 4. Portfolio Showcase (پوسترها و ویدیوها با نام یکسان) -->
     <h2 class="section-title">ویترین <span>نمونه‌کارها</span></h2>
+        <div class="v8-filter" role="tablist" aria-label="فیلتر نمونه‌کارها">
+        <button type="button" class="v8-tab is-active" data-filter="all" role="tab">همه</button>
+        <button type="button" class="v8-tab" data-filter="0" role="tab">ویدیو</button>
+        <button type="button" class="v8-tab" data-filter="1" role="tab">استوری</button>
+        <button type="button" class="v8-tab" data-filter="2" role="tab">بنر</button>
+    </div>
     <section class="portfolio">
         
         <!-- Part 1: Video Editing -->
@@ -755,5 +787,39 @@ h1,h2,h3,h4{color:#fff}
     object-fit: cover;
   }
 </style>
+<div class="v8-progress" id="v8Progress"></div>
+<a class="v8-fab" href="https://t.me/editgraph_yasi" aria-label="تماس در تلگرام" target="_blank" rel="noopener">&#9992;</a>
+
+<script>
+(function(){
+  var bar=document.getElementById('v8Progress');
+  function upd(){var h=document.documentElement;var max=h.scrollHeight-h.clientHeight;var p=max>0?h.scrollTop/max:0;bar.style.transform='scaleX('+p+')';}
+  window.addEventListener('scroll',upd,{passive:true});upd();
+
+  var el=document.getElementById('v8-typed');
+  var words=['ادمین اینستاگرام','تدوینگر ویدیو','طراح گرافیک'];
+  if(el){
+    var w=0,c=0,del=false;
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=words[0];}
+    else{(function tick(){
+      var word=words[w];
+      if(!del){c++;el.textContent=word.slice(0,c);if(c===word.length){del=true;return setTimeout(tick,1600);}}
+      else{c--;el.textContent=word.slice(0,c);if(c===0){del=false;w=(w+1)%words.length;}}
+      setTimeout(tick,del?40:90);
+    })();}
+  }
+
+  var tabs=document.querySelectorAll('.v8-tab');
+  var groups=document.querySelectorAll('.portfolio > .portfolio-group');
+  tabs.forEach(function(t){t.addEventListener('click',function(){
+    tabs.forEach(function(x){x.classList.remove('is-active');x.setAttribute('aria-selected','false');});
+    t.classList.add('is-active');t.setAttribute('aria-selected','true');
+    var f=t.getAttribute('data-filter');
+    groups.forEach(function(g,i){g.style.display=(f==='all'||String(i)===f)?'':'none';});
+  });});
+})();
+</script>
+
+</html>
 </body>
 </html>
